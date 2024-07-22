@@ -10,7 +10,8 @@ import com.example.pokemonapp.databinding.PokemonRowLayoutBinding
 
 class PokemonAdapter(
     private val context: Context,
-    private val pokemonList: MutableList<Pokemon>
+    private val pokemonList: MutableList<Pokemon>,
+    val clickInterface:ClickDetectorInterface
 ): RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: PokemonRowLayoutBinding) : RecyclerView.ViewHolder (binding.root) {}
@@ -33,5 +34,9 @@ class PokemonAdapter(
             .placeholder(R.drawable.ic_question_mark)
             .error(R.drawable.ic_question_mark)
             .into(holder.binding.ivPokemonImg)
+
+        holder.binding.parentLayout.setOnClickListener {
+            clickInterface.onRowClicked(position)
+        }
     }
 }

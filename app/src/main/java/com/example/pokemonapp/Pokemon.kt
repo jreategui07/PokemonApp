@@ -1,8 +1,9 @@
 package com.example.pokemonapp
 
+import java.io.Serializable
 import kotlin.random.Random
 
-class Pokemon {
+class Pokemon: Serializable {
     var name:String
     var type:String
     var description:String

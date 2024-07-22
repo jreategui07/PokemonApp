@@ -1,12 +1,13 @@
 package com.example.pokemonapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemonapp.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ClickDetectorInterface {
     private lateinit var binding: ActivityMainBinding
     private var pokemonList:MutableList<Pokemon> = mutableListOf()
     private lateinit var adapter: PokemonAdapter
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         this.pokemonList = Mock.POKEMON_LIST.toMutableList()
 
         // create an instance of the custom adapter
-        this.adapter = PokemonAdapter(this, this.pokemonList)
+        this.adapter = PokemonAdapter(this, this.pokemonList, this)
         this.binding.rvContainer.adapter = this.adapter
 
         // configuring the RecyclerView with a LinearLayoutManager
@@ -67,5 +68,11 @@ class MainActivity : AppCompatActivity() {
         this.pokemonList.clear()
         this.pokemonList.addAll(pokemonList)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun onRowClicked(position: Int) {
+        val intent: Intent = Intent(this@MainActivity, PokemonDetail::class.java)
+        intent.putExtra("EXTRA_POKEMON", this.pokemonList[position])
+        startActivity(intent)
     }
 }
