@@ -1,7 +1,6 @@
 package com.example.pokemonapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,6 +38,10 @@ class MainActivity : AppCompatActivity() {
         this.binding.btnSearch.setOnClickListener {
             searchPokemonType(this.binding.etPokemonType.text.toString())
         }
+
+        this.binding.btnReset.setOnClickListener {
+            resetPokemonList()
+        }
     }
 
     private fun searchPokemonType(pokemonType: String) {
@@ -53,6 +56,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         displayList(searchResults)
+    }
+
+    private fun resetPokemonList() {
+        binding.etPokemonType.setText("")
+        displayList()
     }
 
     private fun displayList(pokemonList: MutableList<Pokemon> = Mock.POKEMON_LIST.toMutableList()) {
