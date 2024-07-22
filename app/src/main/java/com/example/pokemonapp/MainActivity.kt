@@ -6,16 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemonapp.databinding.ActivityMainBinding
+import com.example.pokemonapp.utils.SnackbarHelper
 
 class MainActivity : AppCompatActivity(), ClickDetectorInterface {
     private lateinit var binding: ActivityMainBinding
     private var pokemonList:MutableList<Pokemon> = mutableListOf()
     private lateinit var adapter: PokemonAdapter
+    private lateinit var snackbarHelper: SnackbarHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
+
+        // init custom snackbar helper
+        this.snackbarHelper = SnackbarHelper(this.binding.root)
 
         // getting mock data
         this.pokemonList = Mock.POKEMON_LIST.toMutableList()
@@ -47,7 +52,7 @@ class MainActivity : AppCompatActivity(), ClickDetectorInterface {
 
     private fun searchPokemonType(pokemonType: String) {
         if (pokemonType == "") {
-            displayList()
+            this.snackbarHelper.showSnackbar("Enter a Pokemon type")
             return
         }
         val searchResults: MutableList<Pokemon> = mutableListOf()
@@ -57,11 +62,13 @@ class MainActivity : AppCompatActivity(), ClickDetectorInterface {
             }
         }
         displayList(searchResults)
+        this.snackbarHelper.showSnackbar("Displaying $pokemonType-type Pokemon")
     }
 
     private fun resetPokemonList() {
         binding.etPokemonType.setText("")
         displayList()
+        this.snackbarHelper.showSnackbar("Displaying all Pokemon")
     }
 
     private fun displayList(pokemonList: MutableList<Pokemon> = Mock.POKEMON_LIST.toMutableList()) {
