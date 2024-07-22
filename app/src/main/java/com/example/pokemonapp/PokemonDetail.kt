@@ -2,6 +2,7 @@ package com.example.pokemonapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.pokemonapp.databinding.ActivityPokemonDetailBinding
 
 class PokemonDetail : AppCompatActivity() {
@@ -23,6 +24,14 @@ class PokemonDetail : AppCompatActivity() {
     }
 
     private fun showPokemon(pokemon:Pokemon) {
-        binding.tvPokemonName.setText(pokemon.name)
+        Glide.with(this)
+            .load(pokemon.imageUrl)
+            .placeholder(R.drawable.ic_question_mark)
+            .error(R.drawable.ic_question_mark)
+            .into(binding.ivPokemonImg)
+
+        binding.tvDescription.setText(pokemon.name)
+        binding.tvPokemonType.setText("Type: ${pokemon.type}")
+        binding.tvDescription.setText(pokemon.description)
     }
 }

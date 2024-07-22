@@ -6,15 +6,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".PokemonDetail">
+    <ImageView
+        android:id="@+id/ivPokemonImg"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_question_mark" />
     <TextView
         android:id="@+id/tvPokemonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pokemon Detail" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="Pokemon name" />
+    <TextView
+        android:id="@+id/tvPokemonType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:text="Pokemon type" />
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:textStyle="italic"
+        android:text="Pokemon description" />
     <Button
         android:id="@+id/btnGoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Go Back!"/>
 </LinearLayout>
