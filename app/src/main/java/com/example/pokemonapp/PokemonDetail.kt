@@ -30,7 +30,7 @@ class PokemonDetail : AppCompatActivity() {
             .error(R.drawable.ic_question_mark)
             .into(binding.ivPokemonImg)
 
-        binding.tvDescription.setText(pokemon.name)
+        binding.tvPokemonName.setText(pokemon.name)
         binding.tvPokemonType.setText("Type: ${pokemon.type}")
         binding.tvDescription.setText(pokemon.description)
     }
