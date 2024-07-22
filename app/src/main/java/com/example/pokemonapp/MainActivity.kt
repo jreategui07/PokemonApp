@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), ClickDetectorInterface {
 
     private fun searchPokemonType(pokemonType: String) {
         if (pokemonType == "") {
-            this.snackbarHelper.showSnackbar("Enter a Pokemon type")
+            this.snackbarHelper.showSnackbar("Enter a Pokémon type")
             return
         }
         val searchResults: MutableList<Pokemon> = mutableListOf()
@@ -62,13 +62,13 @@ class MainActivity : AppCompatActivity(), ClickDetectorInterface {
             }
         }
         displayList(searchResults)
-        this.snackbarHelper.showSnackbar("Displaying $pokemonType-type Pokemon")
+        this.snackbarHelper.showSnackbar("Displaying $pokemonType-type Pokémon")
     }
 
     private fun resetPokemonList() {
         binding.etPokemonType.setText("")
         displayList()
-        this.snackbarHelper.showSnackbar("Displaying all Pokemon")
+        this.snackbarHelper.showSnackbar("Displaying all Pokémon")
     }
 
     private fun displayList(pokemonList: MutableList<Pokemon> = Mock.POKEMON_LIST.toMutableList()) {

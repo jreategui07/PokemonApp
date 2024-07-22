@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pokemon Demo"
+            android:text="Pokémon App"
             android:textSize="24sp"
             android:textAlignment="center"
             android:layout_marginBottom="16dp"/>
@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Enter Pokemon type"
+                android:hint="Enter Pokémon type"
                 android:text=""/>
             <Button
                 android:id="@+id/btnSearch"
