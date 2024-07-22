@@ -40,9 +40,9 @@ object Mock {
         ),
         Pokemon(
             "Charmeleon",
-            "electric",
-            "Although it’s called a guardian deity, if a person or Pokémon puts it in a bad mood, it will become a malevolent deity and attack.",
-            "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/785.png"
+            "fire",
+            "When it swings its burning tail, the temperature around it rises higher and higher, tormenting its opponents.",
+            "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png"
         ),
         Pokemon(
             "Squirtle",

@@ -42,6 +42,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchPokemonType(pokemonType: String) {
-        Log.d("", "Search Pokemon: $pokemonType")
+        if (pokemonType == "") {
+            displayList()
+            return
+        }
+        val searchResults: MutableList<Pokemon> = mutableListOf()
+        for (pokemon: Pokemon in Mock.POKEMON_LIST.toMutableList()) {
+            if (pokemonType == pokemon.type) {
+                searchResults.add(pokemon)
+            }
+        }
+        displayList(searchResults)
+    }
+
+    private fun displayList(pokemonList: MutableList<Pokemon> = Mock.POKEMON_LIST.toMutableList()) {
+        this.pokemonList.clear()
+        this.pokemonList.addAll(pokemonList)
+        adapter.notifyDataSetChanged()
     }
 }
